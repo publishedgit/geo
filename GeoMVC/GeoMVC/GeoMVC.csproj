@@ -143,6 +143,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BL\Provider\Provider.cs" />
+    <Compile Include="BL\Repository\CarRepo.cs" />
+    <Compile Include="BL\Repository\LocationRepo.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -156,9 +159,15 @@
       <DependentUpon>Northwind.dbml</DependentUpon>
     </Compile>
     <Compile Include="Models\NorthwindDataProvider.cs" />
+    <Compile Include="Nhibernate\Map\CarMap.cs" />
+    <Compile Include="Nhibernate\Map\LocationMap.cs" />
+    <Compile Include="Nhibernate\Model\GeoModel.cs" />
+    <Compile Include="Nhibernate\MsSqlConfiguration.cs" />
+    <Compile Include="Nhibernate\NHibernateHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Models\Northwind.dbml.layout">
       <DependentUpon>Northwind.dbml</DependentUpon>
     </None>
