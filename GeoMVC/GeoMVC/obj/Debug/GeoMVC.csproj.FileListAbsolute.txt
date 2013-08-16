@@ -6,6 +6,11 @@ D:\Repositories\GeoView\geo\GeoMVC\GeoMVC\bin\WebMatrix.WebData.dll
 D:\Repositories\GeoView\geo\GeoMVC\GeoMVC\bin\EntityFramework.xml
 D:\Repositories\GeoView\geo\GeoMVC\GeoMVC\bin\WebMatrix.Data.xml
 D:\Repositories\GeoView\geo\GeoMVC\GeoMVC\bin\WebMatrix.WebData.xml
-D:\Repositories\GeoView\geo\GeoMVC\GeoMVC\obj\Debug\GeoMVC.csprojResolveAssemblyReference.cache
 D:\Repositories\GeoView\geo\GeoMVC\GeoMVC\obj\Debug\GeoMVC.dll
 D:\Repositories\GeoView\geo\GeoMVC\GeoMVC\obj\Debug\GeoMVC.pdb
+D:\Repositories\GeoView\geo\GeoMVC\GeoMVC\bin\FluentNHibernate.dll
+D:\Repositories\GeoView\geo\GeoMVC\GeoMVC\bin\Iesi.Collections.dll
+D:\Repositories\GeoView\geo\GeoMVC\GeoMVC\bin\NHibernate.dll
+D:\Repositories\GeoView\geo\GeoMVC\GeoMVC\bin\FluentNHibernate.xml
+D:\Repositories\GeoView\geo\GeoMVC\GeoMVC\bin\Iesi.Collections.xml
+D:\Repositories\GeoView\geo\GeoMVC\GeoMVC\bin\NHibernate.xml
