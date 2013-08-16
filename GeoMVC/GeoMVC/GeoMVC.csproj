@@ -158,6 +158,7 @@
     <Compile Include="BL\Repository\CarRepo.cs" />
     <Compile Include="BL\Repository\LocationRepo.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CarController.cs" />
     <Compile Include="Controllers\CommonController.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -208,7 +209,11 @@
     <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
     <Content Include="packages.config" />
     <Content Include="Views\Location\Index.cshtml" />
-    <Content Include="Views\Location\EditModesPartial.cshtml" />
+    <Content Include="Views\Location\EditLocationsPartial.cshtml" />
+    <Content Include="Views\Car\Index.cshtml" />
+    <Content Include="Views\Car\EditCarPartial.cshtml" />
+    <Content Include="Views\Car\ListLocationsForCars.cshtml" />
+    <Content Include="Views\Car\AddCar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Models\Northwind.dbml">

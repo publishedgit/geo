@@ -7,7 +7,7 @@ using BL.Repository;
 
 namespace GeoWPFCreateDbTest.BL.Provider
 {
-    class Provider : IDisposable
+    public class Provider : IDisposable
     {
         public LocationRepo LocationRepository { get; set; }
         public CarRepo CarRepository { get; set; }

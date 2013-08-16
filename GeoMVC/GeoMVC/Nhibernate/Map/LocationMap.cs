@@ -12,9 +12,9 @@ namespace GeoWPFCreateDbTest.Nhibernate.Map
         public LocationMap()
         {
             Id(x => x.Id);
-            Map(x => x.ZipCode).Not.Nullable();
-            Map(x => x.Address).Not.Nullable();
-            Map(x => x.ParkingLot).Not.Nullable();
+            Map(x => x.ZipCode);
+            Map(x => x.Address);
+            Map(x => x.ParkingLot);
         }
         
     }

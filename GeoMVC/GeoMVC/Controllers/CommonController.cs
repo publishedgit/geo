@@ -82,28 +82,28 @@ namespace GeoMVC.Controllers
             return types;
         }
 
-        static GridViewSettings exportGridViewSettings;
-        public static GridViewSettings ExportGridViewSettings {
-            get {
-                if(exportGridViewSettings == null)
-                    exportGridViewSettings = CreateExportGridViewSettings();
-                return exportGridViewSettings;
-            }
-        }
-        static GridViewSettings CreateExportGridViewSettings()
-        {
-            GridViewSettings settings = new GridViewSettings();
+        //static GridViewSettings exportGridViewSettings;
+        //public static GridViewSettings ExportGridViewSettings {
+        //    get {
+        //        if(exportGridViewSettings == null)
+        //            exportGridViewSettings = CreateExportGridViewSettings();
+        //        return exportGridViewSettings;
+        //    }
+        //}
+        //static GridViewSettings CreateExportGridViewSettings()
+        //{
+        //    GridViewSettings settings = new GridViewSettings();
 
-            settings.Name = "gvExport";
-            settings.CallbackRouteValues = new { Controller = "GridView", Action = "ExportPartial" };
-            settings.Width = Unit.Percentage(100);
+        //    settings.Name = "gvExport";
+        //    settings.CallbackRouteValues = new { Controller = "GridView", Action = "ExportPartial" };
+        //    settings.Width = Unit.Percentage(100);
 
-            settings.Columns.Add("ZipCode");
-            settings.Columns.Add("Address");
-            settings.Columns.Add("ParkingLot");
+        //    settings.Columns.Add("ZipCode");
+        //    settings.Columns.Add("Address");
+        //    settings.Columns.Add("ParkingLot");
 
-            return settings;
-        }
+        //    return settings;
+        //}
     }
 
     public enum GridViewExportType { None, Pdf, Xls, Xlsx, Rtf, Csv }

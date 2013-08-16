@@ -15,16 +15,16 @@ using GeoWPFCreateDbTest.Nhibernate.Model;
 
 namespace GeoMVC.Controllers
 {
-    public class LocationController : CommonController
+    public class CarController : Controller
     {
         //
-        // GET: /Location/
+        // GET: /Car/
 
         public ActionResult Index()
         {
             using (var data = new Provider())
             {
-                return View("Index", data.LocationRepository.GetAllLocation());
+                return View("Index", data.CarRepository.GetAllCar());
             }
         }
 
@@ -32,16 +32,16 @@ namespace GeoMVC.Controllers
         {
             using (var data = new Provider())
             {
-                return View("EditModes",data.LocationRepository.GetAllLocation());
+                return View("EditModes", data.CarRepository.GetAllCar());
             }
             //return DemoView("EditModes", NorthwindDataProvider.GetEditableProducts());
         }
         [ValidateInput(false)]
-        public ActionResult EditLocationsPartial()
+        public ActionResult EditCarPartial()
         {
             using (var data = new Provider())
             {
-                return PartialView("EditLocationsPartial", data.LocationRepository.GetAllLocation());
+                return PartialView("EditCarPartial", data.CarRepository.GetAllCar());
             }
             //return PartialView("EditModesPartial", NorthwindDataProvider.GetEditableProducts());
         }
@@ -50,12 +50,14 @@ namespace GeoMVC.Controllers
             GridViewDemosHelper.EditMode = editMode;
             using (var data = new Provider())
             {
-                return PartialView("EditLocationsPartial", data.LocationRepository.GetAllLocation());
+                return PartialView("EditCarPartial", data.CarRepository.GetAllCar());
             }
             //return PartialView("EditModesPartial", NorthwindDataProvider.GetEditableProducts());
         }
+
+
         [HttpPost, ValidateInput(false)]
-        public ActionResult EditModesAddNewPartial(Location product)
+        public ActionResult EditModesAddNewPartial(Car product)
         {
             if (ModelState.IsValid)
             {
@@ -64,7 +66,7 @@ namespace GeoMVC.Controllers
                     //NorthwindDataProvider.InsertProduct(product);
                     using (var data = new Provider())
                     {
-                        data.LocationRepository.Add(product);
+                        data.CarRepository.Add(product);
                     }
                 }
                 catch (Exception e)
@@ -76,12 +78,12 @@ namespace GeoMVC.Controllers
                 ViewData["EditError"] = "Please, correct all errors.";
             using (var data = new Provider())
             {
-                return PartialView("EditLocationsPartial", data.LocationRepository.GetAllLocation());
+                return PartialView("EditCarPartial", data.CarRepository.GetAllCar());
             }
             //return PartialView("EditModesPartial", NorthwindDataProvider.GetEditableProducts());
         }
         [HttpPost, ValidateInput(false)]
-        public ActionResult EditModesUpdatePartial(Location product)
+        public ActionResult EditModesUpdatePartial(Car car)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +92,7 @@ namespace GeoMVC.Controllers
                     //NorthwindDataProvider.UpdateProduct(product);
                     using (var data = new Provider())
                     {
-                        data.LocationRepository.Update(product);
+                        data.CarRepository.Update(car);
                     }
                 }
                 catch (Exception e)
@@ -102,22 +104,21 @@ namespace GeoMVC.Controllers
                 ViewData["EditError"] = "Please, correct all errors.";
             using (var data = new Provider())
             {
-                return PartialView("EditLocationsPartial", data.LocationRepository.GetAllLocation());
+                return PartialView("EditCarPartial", data.CarRepository.GetAllCar());
             }
             //return PartialView("EditModesPartial", NorthwindDataProvider.GetEditableProducts());
         }
         [HttpPost, ValidateInput(false)]
-        public ActionResult EditModesDeletePartial(Location productID)
+        public ActionResult EditModesDeletePartial(int productID)
         {
-            if (productID.Id >= 0)
+            if (productID >= 0)
             {
                 try
                 {
                     //NorthwindDataProvider.DeleteProduct(productID);
                     using (var data = new Provider())
                     {
-                        var product = data.LocationRepository.GetLocationById(((Location)productID).Id);
-                        data.LocationRepository.Delete(product);
+                        data.CarRepository.DeleteCarById(productID);
                     }
                 }
                 catch (Exception e)
@@ -128,9 +129,41 @@ namespace GeoMVC.Controllers
             //return PartialView("EditModesPartial", NorthwindDataProvider.GetEditableProducts());
             using (var data = new Provider())
             {
-                return PartialView("EditLocationsPartial", data.LocationRepository.GetAllLocation());
+                return PartialView("EditCarPartial", data.CarRepository.GetAllCar());
             }
         }
 
+        public ActionResult ListLocationsForCars()
+        {
+            using(var data = new Provider())
+            {
+                return View("ListLocationsForCars", data.LocationRepository.GetAllLocation());
+            }
+        }
+
+        public ActionResult AddCar(Location locationId)
+        {
+            var c = new Car();
+            using (var data = new Provider())
+            {
+                //c.Location = data.LocationRepository.GetLocationById(locationId);
+                c.Location = locationId;
+                c.ProductionTime = DateTime.Now;
+                data.CarRepository.Add(c);
+            }
+            
+
+            return View("AddCar", c);
+        }
+
+        public void UpdateCarToSave(Car car)
+        {
+            var c = new Car();
+            using (var data = new Provider())
+            {
+                data.CarRepository.Update(car);
+            }
+            ListLocationsForCars();
+        }
     }
 }

@@ -14,3 +14,4 @@ D:\Repositories\GeoView\geo\GeoMVC\GeoMVC\bin\NHibernate.dll
 D:\Repositories\GeoView\geo\GeoMVC\GeoMVC\bin\FluentNHibernate.xml
 D:\Repositories\GeoView\geo\GeoMVC\GeoMVC\bin\Iesi.Collections.xml
 D:\Repositories\GeoView\geo\GeoMVC\GeoMVC\bin\NHibernate.xml
+D:\Repositories\GeoView\geo\GeoMVC\GeoMVC\obj\Debug\GeoMVC.csprojResolveAssemblyReference.cache
