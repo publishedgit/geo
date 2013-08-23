@@ -14,11 +14,11 @@
             settings.SettingsPopup.EditForm.Width = 600;
 
             settings.CommandColumn.Visible = true;
-            settings.CommandColumn.NewButton.Visible = false;
+            settings.CommandColumn.NewButton.Visible = true;
             settings.CommandColumn.DeleteButton.Visible = true; // It is ready for the true state.
             settings.CommandColumn.EditButton.Visible = true;
 
-            settings.Columns.Add("Id").ReadOnly = true;
+            //settings.Columns.Add("Id").ReadOnly = true;
             settings.Columns.Add("Made");
             settings.Columns.Add("Type");
             //settings.Columns.Add("ParkingLot");
@@ -30,7 +30,80 @@
             });
             settings.Columns.Add("Condition");
             settings.Columns.Add("NumberOfOwners");
-            settings.Columns.Add("Location");
+            //var l = settings.Columns.Add("Location.ZipCode");
+            //l.ReadOnly = true;
+            //l.SetEditItemTemplateContent("");
+            
+            //settings.Columns.Add("Location.Address").ReadOnly = true;
+            //settings.Columns.Add("Location.Id");
+
+            settings.Columns.Add(column =>
+                {
+                    column.FieldName = "Location.Id";
+                    column.Caption = "Location";
+
+                    column.ColumnType = MVCxGridViewColumnType.ComboBox;
+                    var comboBoxProperties = column.PropertiesEdit as ComboBoxProperties;
+                    using(var data = new GeoWPFCreateDbTest.BL.Provider.Provider())
+                    {
+                        comboBoxProperties.DataSource = data.LocationRepository.GetAllLocation();
+                    }
+                    comboBoxProperties.Columns.Add("ZipCode");
+                    comboBoxProperties.Columns.Add("Address");
+                    comboBoxProperties.TextField = comboBoxProperties.TextFormatString = "{0} {1}";
+                    
+                    //comboBoxProperties.TextField = string.Format("{0} {1}",
+                    //            DataBinder.Eval( "ZipCode"),
+                    //            DataBinder.Eval(comboBoxProperties.DataSource, "Address")
+                    //            );
+                    comboBoxProperties.ValueField = "Id";
+                    comboBoxProperties.ValueType = typeof(int);
+                                        
+                }
+                );
+            
+            //settings.Columns.Add(column =>
+            //    {
+            //        column.Caption = "Location";
+                    
+            //        column.SetDataItemTemplateContent(c =>
+            //            {
+            //                ViewContext.Writer.Write(
+            //                    string.Format("{0} {1}",
+            //                    DataBinder.Eval(c.DataItem, "Location.ZipCode"),
+            //                    DataBinder.Eval(c.DataItem, "Location.Address")
+            //                    )
+            //                ); 
+            //            }
+            //            );
+
+            //        column.SetHeaderCaptionTemplateContent(c =>
+            //            {
+            //                ViewContext.Writer.Write("Location"); 
+            //            }
+            //            );
+            //        column.ReadOnly = true;
+            //        column.Visible = true;
+            //        column.SetEditItemTemplateContent(c =>
+            //        {
+            //            ViewContext.Writer.Write(
+            //                string.Format("{0} {1}",
+            //                DataBinder.Eval(c.DataItem, "Location.ZipCode"),
+            //                DataBinder.Eval(c.DataItem, "Location.Address")
+            //                )
+            //            );
+            //        }
+            //        );
+                    
+            //    }                
+            //    );
+
+            //settings.Columns.Add(
+            //    column =>
+            //    {
+            //        column.FieldName = "Location.ZipCode"; 
+            //    }
+            //    );
             
            @* settings.PreRender = (sender, e) => {
                 ((MVCxGridView)sender).ForceDataRowType(typeof(System.Activities.Location));
@@ -38,10 +111,10 @@
             *@
     
             
-            settings.PreRender = (sender, e) =>
-            {
-                ((MVCxGridView)sender).StartEdit(1);
-            };
+            //settings.PreRender = (sender, e) =>
+            //{
+            //    ((MVCxGridView)sender).StartEdit(1);
+            //};
         });
 
     if (ViewData["EditError"] != null)

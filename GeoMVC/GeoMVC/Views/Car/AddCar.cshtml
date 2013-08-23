@@ -1,4 +1,4 @@
-﻿@model GeoWPFCreateDbTest.Nhibernate.Model.Car
+﻿@model GeoMVC.Models.CarModel
 
 @{
     ViewBag.Title = "AddCar";
@@ -6,7 +6,8 @@
 
 <h2>AddCar</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm("AddCarSave", "Car"))
+{
     @Html.ValidationSummary(true)
 
     <fieldset>
@@ -28,13 +29,13 @@
             @Html.ValidationMessageFor(model => model.Type)
         </div>
 
-        <div class="editor-label">
+        @*<div class="editor-label">
             @Html.LabelFor(model => model.ProductionTime)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.ProductionTime)
-            @Html.ValidationMessageFor(model => model.ProductionTime)
-        </div>
+            @Html.ValidationMessageFor(model => model.ProductionTime) 
+        </div>*@
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Condition)
@@ -52,26 +53,14 @@
             @Html.ValidationMessageFor(model => model.NumberOfOwners)
         </div>
 
-      @*  <p>
-            <input type="submit" value="Create" />
+        @Html.HiddenFor(model => model.LocationId)
+
+        <p>
+            <input type="submit" value="UpdateCarToSave" />
         </p>
-        *@
+        
     </fieldset>
 }
-
-<div>
-    @Html.ActionLink("Save and back to the List", "UpdateCarToSave", new GeoWPFCreateDbTest.Nhibernate.Model.Car()
-{
-    Id = Model.Id,
-    Location = Model.Location,
-    Condition = Model.Condition,
-    Made = Model.Made,
-    NumberOfOwners = Model.NumberOfOwners,
-    ProductionTime = Model.ProductionTime,
-    Type = Model.Type,
-    Vintage = Model.Vintage
-})
-</div>
 
 @*
 @section Scripts {

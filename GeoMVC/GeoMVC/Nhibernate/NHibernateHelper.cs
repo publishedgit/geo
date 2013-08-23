@@ -11,7 +11,6 @@ using System.Data.SqlClient;
 using System.Configuration;
 using GeoWPFCreateDbTest.Nhibernate;
 using GeoWPFCreateDbTest.BL.Provider;
-using GeoWPFCreateDbTest.Nhibernate.Model;
 
 namespace GeoWPFCreateDbTest.Nhibernate
 {

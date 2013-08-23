@@ -1,0 +1,1 @@
+<%@ Application Codebehind="Global.asax.cs" Inherits="GeoMVC.MvcApplication" Language="C#" %>

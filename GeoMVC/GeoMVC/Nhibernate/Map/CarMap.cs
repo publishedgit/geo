@@ -18,7 +18,7 @@ namespace GeoWPFCreateDbTest.Nhibernate.Map
             Map(x => x.ProductionTime);
             Map(x => x.Condition);
             Map(x => x.NumberOfOwners);
-            References(x => x.Location).Cascade.All();
+            References(x => x.Location).Cascade.All().Not.LazyLoad();
         }
     }
 }

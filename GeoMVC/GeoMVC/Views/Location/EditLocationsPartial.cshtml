@@ -15,7 +15,7 @@
 
             settings.CommandColumn.Visible = true;
             settings.CommandColumn.NewButton.Visible = true;
-            settings.CommandColumn.DeleteButton.Visible = false; // It is ready for the true state.
+            settings.CommandColumn.DeleteButton.Visible = true; // It is ready for the true state.
             settings.CommandColumn.EditButton.Visible = true;
 
             settings.Columns.Add("ZipCode");
@@ -37,10 +37,10 @@
             *@
     
             
-            settings.PreRender = (sender, e) =>
-            {
-                ((MVCxGridView)sender).StartEdit(1);
-            };
+            //settings.PreRender = (sender, e) =>
+            //{
+            //    ((MVCxGridView)sender).StartEdit(1);
+            //};
         });
 
     if (ViewData["EditError"] != null)

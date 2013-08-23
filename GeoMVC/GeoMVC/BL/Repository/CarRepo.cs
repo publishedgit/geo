@@ -17,7 +17,7 @@ namespace BL.Repository
             using (ISession session = NHibernateHelper.OpenSession())
             {
                 using( ITransaction transaction = session.BeginTransaction())
-                {
+                {                    
                     session.Save(newCar);
                     transaction.Commit();
                 }
