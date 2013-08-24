@@ -273,7 +273,6 @@
     <Content Include="Views\Location\EditLocationsPartial.cshtml" />
     <Content Include="Views\Car\Index.cshtml" />
     <Content Include="Views\Car\EditCarPartial.cshtml" />
-    <Content Include="Views\Car\ListLocationsForCars.cshtml" />
     <Content Include="Views\Car\AddCar.cshtml" />
   </ItemGroup>
   <ItemGroup>

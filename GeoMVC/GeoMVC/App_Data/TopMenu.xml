@@ -3,5 +3,4 @@
   <item Text="Home" NavigateUrl="/Home/Index" />
   <item Text="Manage Locations" NavigateUrl="/Location/Index"  />
   <item Text="Manage Cars" NavigateUrl="/Car/Index"  />
-  <item Text="Add car" NavigateUrl="/Car/ListLocationsForCars"  />
 </items>

@@ -92,6 +92,29 @@ namespace BL.Repository
             }
         }
 
+        public void DeleteCarByCollection(List<Car> carsForDelete)
+        {
+            using (ISession session = NHibernateHelper.OpenSession())
+            {
+                using (ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        foreach (var car in carsForDelete)
+                        {
+                            session.Delete(car);
+                        }
+                        transaction.Commit();
+                    }
+                    catch (Exception)
+                    {
+                        transaction.Commit();
+                    }
+
+                }
+            }
+        }
+
         public void DeleteCarById(int carId)
         {
             Delete(GetCarById(carId));

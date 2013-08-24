@@ -67,6 +67,12 @@ namespace BL.Repository
             {
                 using (ITransaction transaction = session.BeginTransaction())
                 {
+                    using(var data = new GeoWPFCreateDbTest.BL.Provider.Provider())
+                    {
+                        var carsForDelete = data.CarRepository.GetCarsByLocationId(newLocation.Id);
+                        data.CarRepository.DeleteCarByCollection(carsForDelete);
+                    }
+                    
                     session.Delete(newLocation);
                     transaction.Commit();
                 }
