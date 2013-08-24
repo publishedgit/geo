@@ -30,6 +30,73 @@
                 spinEditProperties.MinValue = 0;
                 spinEditProperties.MaxValue = 10000;
             });
+
+            settings.Columns.Add(column =>
+            {
+                column.Caption = "Counted cars.";
+                column.SetDataItemTemplateContent(c =>
+                {
+                    using(var data = new GeoWPFCreateDbTest.BL.Provider.Provider())
+                    {
+                        var obj = DataBinder.Eval(c.DataItem, "Id");
+                        if (obj != null)
+                        {
+                            int locationId = int.Parse(obj.ToString());
+                            int carCount = data.CarRepository.GetCarsByLocationId(locationId).Count;
+                            int parkingLot = (int)DataBinder.Eval(c.DataItem, "ParkingLot");
+                            if (parkingLot <= carCount)
+                            {
+                                ViewContext.Writer.Write("It is full. ({0})", carCount);
+                            }
+                            else 
+                            {
+                                ViewContext.Writer.Write(string.Format("{0}", carCount));
+                            }
+                            
+                        }
+                        else
+                        {
+                            ViewContext.Writer.Write("Not defined.");
+                        }
+                        
+                        
+                    }
+
+                }
+                );
+
+                column.SetEditItemTemplateContent(c =>
+                {
+                    using (var data = new GeoWPFCreateDbTest.BL.Provider.Provider())
+                    {
+                        var obj = DataBinder.Eval(c.DataItem, "Id");
+                        if (obj != null)
+                        {
+                            int locationId = int.Parse(obj.ToString());
+                            int carCount = data.CarRepository.GetCarsByLocationId(locationId).Count;
+                            int parkingLot = (int)DataBinder.Eval(c.DataItem, "ParkingLot");
+                            if (parkingLot <= carCount)
+                            {
+                                ViewContext.Writer.Write("It is full. ({0})", carCount);
+                            }
+                            else
+                            {
+                                ViewContext.Writer.Write(string.Format("{0}", carCount));
+                            }
+
+                        }
+                        else
+                        {
+                            ViewContext.Writer.Write("Not defined.");
+                        }
+                    }
+
+                }
+                );
+
+                column.Visible = true;
+            }
+            );
             
            @* settings.PreRender = (sender, e) => {
                 ((MVCxGridView)sender).ForceDataRowType(typeof(System.Activities.Location));
