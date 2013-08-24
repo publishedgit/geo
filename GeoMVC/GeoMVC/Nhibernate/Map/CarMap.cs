@@ -14,7 +14,6 @@ namespace GeoWPFCreateDbTest.Nhibernate.Map
             Id(x => x.Id);
             Map(x => x.Made);
             Map(x => x.Type);
-            Map(x => x.Vintage);
             Map(x => x.ProductionTime);
             Map(x => x.Condition);
             Map(x => x.NumberOfOwners);

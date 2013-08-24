@@ -19,7 +19,6 @@ namespace GeoWPFCreateDbTest.Nhibernate.Model
         public virtual int Id { get; set; }
         public virtual string Made { get; set; }
         public virtual string Type { get; set; }
-        public virtual int Vintage { get; set; }
         public virtual DateTime ProductionTime { get; set; }
         public virtual string Condition { get; set; }
         public virtual int NumberOfOwners { get; set; }

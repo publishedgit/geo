@@ -52,13 +52,51 @@
                     comboBoxProperties.Columns.Add("Address");
                     comboBoxProperties.TextField = comboBoxProperties.TextFormatString = "{0} {1}";
                     
-                    //comboBoxProperties.TextField = string.Format("{0} {1}",
-                    //            DataBinder.Eval( "ZipCode"),
-                    //            DataBinder.Eval(comboBoxProperties.DataSource, "Address")
-                    //            );
                     comboBoxProperties.ValueField = "Id";
                     comboBoxProperties.ValueType = typeof(int);
                                         
+                }
+                );
+
+            settings.Columns.Add(column =>
+                {
+                    column.Caption = "Vintage";
+                    column.SetDataItemTemplateContent(c =>
+                        {
+                            if (DataBinder.Eval(c.DataItem, "ProductionTime") != null)
+                            {
+                                ViewContext.Writer.Write(
+                                string.Format("{0}",
+                                System.Data.Linq.SqlClient.SqlMethods.DateDiffYear(
+                                ((DateTime)DataBinder.Eval(c.DataItem, "ProductionTime")).Date, DateTime.Now))
+                                );
+                            }
+                            else
+                            {
+                                ViewContext.Writer.Write("0"); 
+                            }
+                            
+                        }
+                        );
+
+                    column.SetEditItemTemplateContent(c =>
+                    {
+                        if (DataBinder.Eval(c.DataItem, "ProductionTime") != null)
+                        {
+                            ViewContext.Writer.Write(
+                            string.Format("{0}",
+                            System.Data.Linq.SqlClient.SqlMethods.DateDiffYear(
+                            ((DateTime)DataBinder.Eval(c.DataItem, "ProductionTime")).Date, DateTime.Now))
+                            );
+                        }
+                        else
+                        {
+                            ViewContext.Writer.Write("0");
+                        }
+                    }
+                    );
+
+                    column.Visible = true;
                 }
                 );
             
